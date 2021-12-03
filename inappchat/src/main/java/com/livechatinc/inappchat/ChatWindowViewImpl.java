@@ -241,7 +241,8 @@ public class ChatWindowViewImpl extends FrameLayout implements ChatWindowView {
     private String constructChatUrl(JSONObject jsonResponse) {
         String chatUrl = null;
         try {
-            chatUrl = jsonResponse.getString("chat_url");
+            //TODO use correct field here
+            chatUrl = jsonResponse.getString(config.licenceRegion == Region.DAL ? "chat_url" : "chat_fra_rul");
 
             chatUrl = chatUrl.replace("{%license%}", config.getParams().get(ChatWindowConfiguration.KEY_LICENCE_NUMBER));
             chatUrl = chatUrl.replace("{%group%}", config.getParams().get(ChatWindowConfiguration.KEY_GROUP_ID));
